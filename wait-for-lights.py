@@ -1,4 +1,4 @@
-from browser import document, alert, html, timer
+from browser import document, alert, html, timer, window
 from random import randint
 
 
@@ -116,10 +116,12 @@ def tick():
 def push_button(event):
     lights.set_demand("on")
     lights.sounds['demand'].play()
+    vibrate(200)
 
 def init():
     document['pushbutton'].bind("click", push_button)
     tick_timer = timer.set_interval(tick, 1000)
 
+vibrate = window.navigator.vibrate
 lights = Lights()
 init()
