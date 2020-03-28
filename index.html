@@ -28,6 +28,11 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
   
+    <!-- PreFetch
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+  <link rel="prefetch" href="./images/rag_amber.jpg">
+  
   <!-- Brython
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   
@@ -36,25 +41,56 @@
   <script type="text/python" src="./wait-for-lights.py" ></script>
 
 </head>
-<body onload="brython(2)">
+<body onload="brython(2)" >
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="section categories" id="all">
 
-  <div class="section categories">
+  <!-- header - Blankline
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container" id="header">
+        <div style="display:none;" id="AboutDetails">
+            <h2>Wait For Lights</h2>
+            <p>Simple pedestrian crossing simulator, writtern for Hamish's Birthday.<br/> 
+            Sounds of vehicles from BBC Sounds effects http://bbcsfx.acropolis.org.uk/<br/>
+            Souce code is at https://github.com/bmsleight/WaitForLightsApp/<br/>
+            Uses the wonderful Brython https://brython.info/ <br/>
+            Send requests for more features to http://twitter.com/bmsleight
+            </p>
+        </div>
+      <div class="row">
+        <div class="nine columns">&nbsp;</div>
+        <div class="three columns">&nbsp;</div>
+      </div>
+    </div>
+
+  <!-- Images
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="container">
       <div class="row">
         <div class="one-third column category"  id="rag" >
-<!--          <img class="u-max-full-width" src="images/Push_Button_4003.jpg">  -->
         </div>
         <div class="one-third column category" id="pushbutton" >
-<!--          <img class="u-max-full-width" src="images/Push_Button_4003.jpg"> -->
         </div>
         <div class="one-third column category" id="ped">
-<!--          <img class="u-max-full-width" src="images/ped.jpg">  -->
         </div>
       </div>
     </div>
+    
+  <!-- About
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container">
+      <div class="row">
+        <div class="eleven columns">&nbsp;</div>
+        <div class="one columns" id="about">
+          <p>About</p>
+        </div>
+      </div>
+    </div>
+  
+  <!-- Log if needed
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <!--    
     <div class="container">
       <div class="row">
@@ -64,8 +100,16 @@
       </div>
     </div>
 -->
-    <div class="container" id="sounds">
+
+  <!-- Place for Sounds and pre-loading images
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container">
+      <div class="row" id="sounds">
+      </div>
+      <div class="row" id="preloadimg" style="display:none;">
+      </div>
     </div>
+
   </div>
 
 

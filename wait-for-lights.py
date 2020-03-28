@@ -1,4 +1,4 @@
-from browser import document, alert, html, timer, window
+from browser import document, alert, html, timer, window, bind
 from random import randint
 
 
@@ -122,9 +122,28 @@ def push_button(event):
     except:
         pass
 
+
+@bind("#about", "click")
+def change(event):
+    display = document["AboutDetails"].style.display
+    document["AboutDetails"].style.display = "inline" if display == "none" else "none"
+    print(display)
+
 def init():
     document['pushbutton'].bind("click", push_button)
     tick_timer = timer.set_interval(tick, 1000)
+
+def preloadimg():
+    #preloadimg
+    imgs = ["favicon.png", "pb_block.jpg", "pb_off.jpg", "pb_on.jpg", 
+           "ped_black.jpg", "ped_green.jpg", "ped.jpg", "ped_red.jpg", 
+           "rag_amber.jpg", "rag_green.jpg", "rag_red-amber.jpg", 
+           "rag_red.jpg"]
+    for i in imgs:
+        document["preloadimg"]  <= html.IMG(src="images/" + i , 
+                                            width="1", height="1",
+                                            boarder="0")
+
 
 try:
     # Not all browsers support
@@ -132,5 +151,6 @@ try:
 except:
     pass
 
+preloadimg()
 lights = Lights()
 init()
