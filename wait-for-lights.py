@@ -20,11 +20,15 @@ class Demand():
         if state == "block":
             self.state = "block"
     
-
 class Lights():
     def __init__(self, signals="pedx"):
         self.events = []
         self.demand = Demand()
+        self.sounds = {'ped': html.AUDIO(src='sounds/bleeplq.mp3'),
+                       'rag': html.AUDIO(src='sounds/trafficlq.mp3'),
+                       'demand': html.AUDIO(src='sounds/clicklq.mp3')
+                       }
+        self.sounds['rag'].play()
         self.startup()
         self.set_demand("off")
     def next(self):
@@ -80,7 +84,6 @@ class Lights():
                        ]
     def set_signal(self, signal, img):
         document[signal].clear()
-#        document[signal] <= html.P(signal + " " + img)
         document[signal] <= html.IMG(src="images/" + img + ".jpg", Class="u-max-full-width")
     def set_demand(self, state):
         self.demand.set(state)
@@ -94,14 +97,25 @@ class Lights():
             self.set_demand('off')
         self.set_signal('ped', signal['ped'])
         self.set_signal('rag', signal['rag'])
+        #Sounds
+        if signal['rag'] == 'rag_green':
+            lights.sounds['rag'].play()
+        if signal['rag'] == 'rag_red':
+            lights.sounds['rag'].pause()
+            lights.sounds['rag'].currentTime = 0
+        if signal['ped'] == 'ped_green':
+            lights.sounds['ped'].currentTime = 0
+            lights.sounds['ped'].play()
+        if signal['ped'] == 'ped_black':
+            lights.sounds['ped'].pause()
+            lights.sounds['ped'].currentTime = 0
 
 def tick():
     lights.next()
 
-
 def push_button(event):
     lights.set_demand("on")
-
+    lights.sounds['demand'].play()
 
 def init():
     document['pushbutton'].bind("click", push_button)
