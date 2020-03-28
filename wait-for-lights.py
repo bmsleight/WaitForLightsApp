@@ -116,12 +116,21 @@ def tick():
 def push_button(event):
     lights.set_demand("on")
     lights.sounds['demand'].play()
-#    vibrate(200)
+    try:
+        # Not all browsers support
+        vibrate(200)
+    except:
+        pass
 
 def init():
     document['pushbutton'].bind("click", push_button)
     tick_timer = timer.set_interval(tick, 1000)
 
-#vibrate = window.navigator.vibrate
+try:
+    # Not all browsers support
+    vibrate = window.navigator.vibrate
+except:
+    pass
+
 lights = Lights()
 init()
