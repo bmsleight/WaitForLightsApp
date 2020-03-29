@@ -104,7 +104,6 @@ class Lights():
             lights.sounds['rag'].pause()
             lights.sounds['rag'].currentTime = 0
         if signal['ped'] == 'ped_green':
-            lights.sounds['ped'].currentTime = 0
             lights.sounds['ped'].play()
         if signal['ped'] == 'ped_black':
             lights.sounds['ped'].pause()
