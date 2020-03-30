@@ -151,5 +151,7 @@ except:
     pass
 
 preloadimg()
+document["loading"].style.display = "inline" 
+document["loading"].style.display = "none" 
 lights = Lights()
 init()
